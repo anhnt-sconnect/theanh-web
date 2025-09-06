@@ -4,10 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CV - Nguyễn Thế Anh</title>
-  <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
   <style>
     body {
       background: linear-gradient(135deg, #e0f2fe, #fef9c3);
@@ -15,40 +14,65 @@
       min-height: 100vh;
     }
     .profile-img {
-      width: 160px;
-      height: 160px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 4px solid #0d6efd;
+      width: 160px; height: 160px; object-fit: cover;
+      border-radius: 50%; border: 4px solid #0d6efd;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+    .profile-img:hover {
+      transform: scale(1.08) rotate(3deg);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     }
     .section-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      border-bottom: 2px solid #333;
-      margin-bottom: 15px;
-      padding-bottom: 5px;
-      text-transform: uppercase;
+      font-size: 1.3rem; font-weight: bold;
+      border-bottom: 2px solid #333; margin-bottom: 15px; padding-bottom: 5px;
+      text-transform: uppercase; position: relative; display: inline-block;
     }
-    .card {
+    .section-title::after {
+      content: ''; display: block; width: 0; height: 3px;
+      background: #0d6efd; transition: width 0.4s ease; margin-top: 5px;
+    }
+    .section-title:hover::after { width: 100%; }
+
+    .card, .cv-card {
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       background: #fff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    .social-icons a {
-      margin: 0 10px;
+    .card:hover, .cv-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+
+    p i {
+      transition: color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+    }
+    p i:hover {
       color: #0d6efd;
-      font-size: 20px;
-      transition: color 0.3s;
+      transform: scale(1.2);
     }
-    .social-icons a:hover {
-      color: #0056b3;
+
+    ul li {
+      transition: transform 0.25s ease, background 0.25s ease;
+      padding: 6px 8px; border-radius: 6px;
     }
-    .cv-card {
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
-      padding: 20px;
-      margin-bottom: 25px;
+    ul li:hover {
+      background: rgba(13, 110, 253, 0.08);
+      transform: translateX(5px);
+    }
+    ul li i {
+      transition: transform 0.3s ease;
+    }
+    ul li:hover i {
+      transform: rotate(15deg) scale(1.2);
+      color: #198754;
+    }
+
+    /* Hiệu ứng ghost khi kéo thả */
+    .sortable-ghost {
+      opacity: 0.5;
+      background: #dbeafe;
     }
   </style>
 </head>
@@ -69,224 +93,113 @@
     <div class="row g-4">
       <!-- Left Column -->
       <div class="col-md-4">
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Kỹ năng</h5>
-          <ul class="list-unstyled">
-            <li><i class="fas fa-check-circle text-success"></i> Laravel, PHP, HTML, CSS, JS</li>
-            <li><i class="fas fa-check-circle text-success"></i> Vue.js, ReactJS, InertiaJS</li>
-            <li><i class="fas fa-check-circle text-success"></i> React Native, Java</li>
-            <li><i class="fas fa-check-circle text-success"></i> MySQL, API Development</li>
-            <li><i class="fas fa-check-circle text-success"></i> Git, GitHub</li>
-          </ul>
-        </div>
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Ngôn ngữ</h5>
-          <p>Tiếng Việt: Native</p>
-          <p>English: Intermediate</p>
-        </div>
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Sở thích</h5>
-          <ul>
-            <li>Chơi game</li>
-            <li>Du lịch</li>
-          </ul>
-        </div>
-        <div class="card p-3">
-          <h5 class="section-title">Hoạt động</h5>
-          <p>Tham gia các hoạt động thể thao, văn nghệ do công ty tổ chức.</p>
+        <div class="sortable">
+          <div class="card p-3 mb-4">
+            <h5 class="section-title">Kỹ năng</h5>
+            <ul class="list-unstyled">
+              <li><i class="fas fa-check-circle text-success"></i> Thành thạo <strong>Laravel, PHP</strong> trong việc phát triển hệ thống quản trị và API backend.</li>
+              <li><i class="fas fa-check-circle text-success"></i> Hiểu sâu <strong>HTML, CSS, JavaScript</strong> và các framework frontend như <strong>Vue.js, ReactJS</strong>, có khả năng xây dựng giao diện UI/UX thân thiện và responsive.</li>
+              <li><i class="fas fa-check-circle text-success"></i> Kinh nghiệm phát triển <strong>ứng dụng di động</strong> bằng React Native và Java.</li>
+              <li><i class="fas fa-check-circle text-success"></i> Làm việc tốt với <strong>MySQL</strong>, thiết kế CSDL, tối ưu truy vấn và bảo mật dữ liệu.</li>
+              <li><i class="fas fa-check-circle text-success"></i> Hiểu và sử dụng <strong>Git/GitHub/GitLab</strong>, nắm rõ Git Flow, CI/CD pipelines.</li>
+              <li><i class="fas fa-check-circle text-success"></i> Có kiến thức về triển khai hệ thống trên <strong>AWS, Docker</strong>.</li>
+              <li><i class="fas fa-check-circle text-success"></i> Kỹ năng mềm: giao tiếp, làm việc nhóm Agile/Scrum, code review, mentoring thực tập sinh.</li>
+            </ul>
+          </div>
+
+          <div class="card p-3 mb-4">
+            <h5 class="section-title">Học vấn</h5>
+            <div class="d-flex justify-content-between">
+              <div>
+                <h6 class="fw-bold mb-0">Cao đẳng Bách Khoa</h6>
+                <p class="mb-1">Công nghệ thông tin</p>
+                <small class="text-muted">Hoàn thành tốt chương trình học, tích cực tham gia các dự án thực hành và nghiên cứu công nghệ mới.</small>
+              </div>
+              <div>
+                <small class="text-muted">08/2019 - 08/2022</small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Right Column -->
       <div class="col-md-8">
-        <!-- Giới thiệu -->
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Giới thiệu</h5>
-          <p>Tôi là một lập trình viên Frontend đam mê xây dựng giao diện người dùng đẹp, thân thiện và hiệu quả. Luôn sẵn sàng học hỏi công nghệ mới và làm việc trong môi trường chuyên nghiệp.</p>
-        </div>
-
-        <!-- Kinh nghiệm -->
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Kinh nghiệm làm việc</h5>
-
-          <div class="d-flex justify-content-between mb-2">
-            <h6 class="fw-bold mb-0">Công ty MUMESOFT</h6>
-            <small class="text-muted">12/2021 - 04/2023</small>
+        <div class="sortable">
+          <!-- Giới thiệu -->
+          <div class="card p-3 mb-4">
+            <h5 class="section-title">Giới thiệu</h5>
+            <p>Tôi là một lập trình viên Web với hơn 3 năm kinh nghiệm trong phát triển cả backend và frontend. Tôi đam mê công nghệ, đặc biệt là xây dựng các hệ thống quản lý doanh nghiệp, ứng dụng web và di động có tính ổn định và khả năng mở rộng cao. </p>
+            <p>Tôi đã tham gia nhiều dự án cho khách hàng Nhật Bản, Singapore và Việt Nam, qua đó tích lũy được kỹ năng làm việc nhóm, giao tiếp với khách hàng, phân tích yêu cầu và đưa ra giải pháp kỹ thuật phù hợp. Tôi luôn đặt mục tiêu tối ưu trải nghiệm người dùng và hiệu suất hệ thống.</p>
+            <p>Mục tiêu nghề nghiệp của tôi là trở thành một <strong>Fullstack Developer</strong>, có khả năng đảm nhận vai trò quan trọng trong các dự án lớn, đồng thời học hỏi và ứng dụng công nghệ mới để nâng cao giá trị sản phẩm.</p>
           </div>
-          <p class="fw-semibold mb-1">Web Developer & Mobile Developer</p>
-          <ul>
-            <li>Thiết kế website và hệ thống ứng dụng cho khách hàng Nhật Bản và Singapore.</li>
-            <li>Lập trình app mobile cho thị trường Nhật.</li>
-          </ul>
 
-          <div class="d-flex justify-content-between mb-2 mt-3">
-            <h6 class="fw-bold mb-0">Công ty TNHH Công nghệ A2Z</h6>
-            <small class="text-muted">05/2023 - 07/2024</small>
-          </div>
-          <p class="fw-semibold mb-1">Web Developer</p>
-          <ul>
-            <li>Tham gia phát triển các website cho khách Nhật và Việt.</li>
-            <li>Phối hợp với bộ phận khác để hoàn thiện website theo yêu cầu.</li>
-            <li>Backup/Restore dữ liệu website định kỳ, bảo trì, cập nhật hệ thống.</li>
-          </ul>
+          <!-- Kinh nghiệm -->
+          <div class="card p-3 mb-4">
+            <h5 class="section-title">Kinh nghiệm làm việc</h5>
 
-          <div class="d-flex justify-content-between mb-2 mt-3">
-            <h6 class="fw-bold mb-0">Công ty Sconnect Việt Nam</h6>
-            <small class="text-muted">07/2024 - Hiện tại</small>
-          </div>
-          <p class="fw-semibold mb-1">Web Developer</p>
-          <ul>
-            <li>Tham gia phát triển các phần mềm quản lý doanh nghiệp.</li>
-          </ul>
-        </div>
-
-        <!-- Kỹ năng chuyên môn -->
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Kỹ năng chuyên môn</h5>
-          <div class="table-responsive">
-            <table class="table table-bordered align-middle">
-              <tbody>
-                <tr>
-                  <th style="width: 25%">Ngôn ngữ & Front-end</th>
-                  <td>
-                    <ul class="mb-0">
-                      <li>Thành thạo HTML, CSS, JavaScript (jQuery), xây dựng giao diện web responsive, tối ưu trải nghiệm người dùng.</li>
-                      <li>Có kinh nghiệm với ReactJS, React Native (1 năm), phát triển ứng dụng web và mobile.</li>
-                      <li>Sử dụng Vue (Vue 3, InertiaJS) để xây dựng và tích hợp ứng dụng với hệ thống Laravel.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Back-end & Framework</th>
-                  <td>
-                    <ul class="mb-0">
-                      <li>Hơn 2 năm kinh nghiệm phát triển ứng dụng với PHP, Laravel; am hiểu core Laravel, tích hợp & tùy biến package ngoài.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Cơ sở dữ liệu</th>
-                  <td>
-                    <ul class="mb-0">
-                      <li>Thành thạo MySQL, SQL Server, thiết kế & quản lý cơ sở dữ liệu, tối ưu truy vấn, phân tích dữ liệu.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Server & Triển khai</th>
-                  <td>
-                    <ul class="mb-0">
-                      <li>Có kinh nghiệm triển khai ứng dụng trên server vật lý và cloud (AWS), quản lý hệ thống hiệu quả.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Kiểm thử</th>
-                  <td>
-                    <ul class="mb-0">
-                      <li>Có khả năng phân tích chức năng, xây dựng test case, kiểm thử và đánh giá chất lượng phần mềm.</li>
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <th>Ngoại ngữ</th>
-                  <td>
-                    <ul class="mb-0">
-                      <li>Tiếng Anh: Đọc hiểu tài liệu kỹ thuật tốt, giao tiếp ở mức cơ bản.</li>
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <!-- Dự án -->
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Dự án đã thực hiện</h5>
-
-          <div class="d-flex justify-content-between mb-1">
-            <a href="https://findtheloan.com" target="_blank" class="fw-bold text-decoration-none">https://findtheloan.com</a>
-            <small class="text-muted">12/2021 - 05/2022</small>
-          </div>
-          <p class="mb-1"><strong>Vai trò:</strong> Developer (FE & BE)</p>
-          <p class="mb-1"><strong>Công nghệ:</strong> Laravel, PHP, HTML, CSS, JavaScript</p>
-          <p><strong>Đóng góp:</strong> Phát triển và tối ưu hệ thống web, xây dựng giao diện người dùng và xử lý logic backend.</p>
-          <hr>
-
-          <div class="d-flex justify-content-between mb-1">
-            <span class="fw-bold">App start, Now, Website</span>
-            <small class="text-muted">05/2022 - 04/2023</small>
-          </div>
-          <p class="mb-1"><strong>Vai trò:</strong> Mobile Developer (Front-end)</p>
-          <p class="mb-1"><strong>Công nghệ:</strong> React Native, ReactJS, Java</p>
-          <p><strong>Đóng góp:</strong> Phát triển ứng dụng mobile, xây dựng UI/UX mượt mà, triển khai các tính năng core và tối ưu hiệu suất.</p>
-          <hr>
-
-          <div class="d-flex justify-content-between mb-1">
-            <span class="fw-bold">Các hệ thống website Nhật</span>
-            <small class="text-muted">05/2023 - 07/2024</small>
-          </div>
-          <p class="mb-1"><strong>Website:</strong> 
-            <a href="https://zaikokanri.system.a2ztech.vn" target="_blank">zaikokanri.system.a2ztech.vn</a>, 
-            <a href="https://asuqaa.system.a2ztech.vn" target="_blank">asuqaa.system.a2ztech.vn</a>, 
-            <a href="https://edge.edu.a2ztech.vn" target="_blank">edge.edu.a2ztech.vn</a>
-          </p>
-          <p class="mb-1"><strong>Vai trò:</strong> Developer (FE & BE)</p>
-          <p class="mb-1"><strong>Công nghệ:</strong> Laravel, PHP, HTML, CSS, JavaScript</p>
-          <p><strong>Đóng góp:</strong> Tự triển khai và phát triển toàn bộ hệ thống web quản lý; tối ưu cơ sở dữ liệu và bảo mật.</p>
-          <hr>
-
-          <div class="d-flex justify-content-between mb-1">
-            <span class="fw-bold">Các hệ thống website Việt</span>
-            <small class="text-muted">05/2023 - 07/2024</small>
-          </div>
-          <p class="mb-1"><strong>Website:</strong> 
-            <a href="https://edu.hanh.net.vn" target="_blank">edu.hanh.net.vn</a>, 
-            <a href="https://mecosmeticsvn.com" target="_blank">mecosmeticsvn.com</a>, 
-            <a href="https://evsavietnam.vn" target="_blank">evsavietnam.vn</a>, 
-            <a href="https://anex.vn" target="_blank">anex.vn</a>
-          </p>
-          <p class="mb-1"><strong>Vai trò:</strong> Backend Developer</p>
-          <p class="mb-1"><strong>Công nghệ:</strong> Laravel, PHP, HTML, CSS, JavaScript, package tích hợp Laravel</p>
-          <p><strong>Đóng góp:</strong> Phát triển backend và API, hỗ trợ triển khai và bảo trì hệ thống.</p>
-          <hr>
-
-          <div class="d-flex justify-content-between mb-1">
-            <span class="fw-bold">Dự án S-office</span>
-            <small class="text-muted">07/2024 - Hiện tại</small>
-          </div>
-          <p class="mb-1"><strong>Vai trò:</strong> Developer</p>
-          <p class="mb-1"><strong>Công nghệ:</strong> Laravel, Vue 3, InertiaJS, JavaScript</p>
-          <p><strong>Đóng góp:</strong> Tham gia phát triển các module quản lý nội bộ, phối hợp cùng team triển khai tính năng mới và tối ưu hệ thống.</p>
-        </div>
-
-        <!-- Mục tiêu nghề nghiệp -->
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Mục tiêu nghề nghiệp</h5>
-          <h6 class="fw-bold">Ngắn hạn</h6>
-          <ul>
-            <li>Tìm kiếm vị trí phù hợp với chuyên môn, được học hỏi thêm kinh nghiệm và quy trình làm việc trong môi trường chuyên nghiệp.</li>
-          </ul>
-          <h6 class="fw-bold">Dài hạn</h6>
-          <ul>
-            <li>Phấn đấu trở thành Senior Web Developer trong 2 năm tới.</li>
-            <li>Đóng góp vào sự phát triển của công ty thông qua việc đề xuất mục tiêu, kế hoạch cụ thể.</li>
-            <li>Liên tục trau dồi kỹ năng, học thêm các công nghệ và ngôn ngữ lập trình mới để nâng cao chuyên môn, gia tăng hiệu quả công việc.</li>
-          </ul>
-        </div>
-
-        <!-- Học vấn -->
-        <div class="card p-3 mb-4">
-          <h5 class="section-title">Học vấn</h5>
-          <div class="d-flex justify-content-between">
-            <div>
-              <h6 class="fw-bold mb-0">Cao đẳng Bách Khoa</h6>
-              <p class="mb-1">Công nghệ thông tin</p>
-              <small class="text-muted">Hoàn thành tốt chương trình học tại trường</small>
+            <!-- MUMESOFT -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <h6 class="fw-bold mb-0">Công ty MUMESOFT</h6>
+                <small class="text-muted">12/2021 - 04/2023</small>
+              </div>
+              <p class="fw-semibold mb-1">Web Developer & Mobile Developer</p>
+              <p><strong>Team size:</strong> 5 (2 BE, 2 FE, 1 QA, 1 Comter)</p>
+              <p><strong>Công việc chính:</strong></p>
+              <ul>
+                <li>Tham gia phát triển website và hệ thống quản lý cho khách hàng Nhật Bản & Singapore.</li>
+                <li>Lập trình ứng dụng mobile cho thị trường Nhật sử dụng React Native.</li>
+                <li>Thiết kế giao diện UI/UX, tối ưu hiển thị trên nhiều thiết bị.</li>
+                <li>Viết API backend bằng Laravel, kết nối với cơ sở dữ liệu MySQL.</li>
+                <li>Hỗ trợ test chức năng, fix bug và tối ưu hiệu năng hệ thống.</li>
+                <li>Tham gia quy trình Agile/Scrum, báo cáo tiến độ và trao đổi trực tiếp với khách hàng.</li>
+              </ul>
+              <p><strong>Công nghệ:</strong> Laravel, PHP, React Native, ReactJS, MySQL, Git.</p>
+              <p><strong>Thành tựu:</strong> Hoàn thành 3 dự án website lớn và 2 ứng dụng mobile, đạt tỉ lệ hài lòng khách hàng >95%.</p>
             </div>
+
+            <!-- A2Z -->
+            <div class="mb-4">
+              <div class="d-flex justify-content-between mb-2">
+                <h6 class="fw-bold mb-0">Công ty TNHH Công nghệ A2Z</h6>
+                <small class="text-muted">05/2023 - 07/2024</small>
+              </div>
+              <p class="fw-semibold mb-1">Web Developer</p>
+              <p><strong>Team size:</strong> 7 (3 BE, 2 FE, 1 QA, 1 PM, 2 Comter)</p>
+              <p><strong>Công việc chính:</strong></p>
+              <ul>
+                <li>Phát triển và bảo trì các website quản lý nghiệp vụ cho khách hàng Nhật và Việt Nam.</li>
+                <li>Xây dựng và tối ưu database, thiết kế cấu trúc bảng cho hệ thống ERP.</li>
+                <li>Tích hợp các package Laravel, phát triển API kết nối với hệ thống khác.</li>
+                <li>Viết tài liệu kỹ thuật, hỗ trợ đồng nghiệp trong việc triển khai và đào tạo sử dụng.</li>
+                <li>Backup/restore dữ liệu định kỳ, giám sát hiệu năng hệ thống.</li>
+                <li>Thực hiện code review, cải thiện chất lượng code theo chuẩn PSR.</li>
+                <li>Tham gia mentor cho thực tập sinh trong team.</li>
+              </ul>
+              <p><strong>Công nghệ:</strong> Laravel, PHP, Vue.js, jQuery, MySQL, AWS.</p>
+              <p><strong>Thành tựu:</strong> Tự triển khai thành công 4 hệ thống ERP cho khách hàng Nhật, giúp giảm 30% thời gian xử lý công việc nội bộ.</p>
+            </div>
+
+            <!-- SCONNECT -->
             <div>
-              <small class="text-muted">08/2019 - 08/2022</small>
+              <div class="d-flex justify-content-between mb-2">
+                <h6 class="fw-bold mb-0">Công ty Sconnect Việt Nam</h6>
+                <small class="text-muted">07/2024 - Hiện tại</small>
+              </div>
+              <p class="fw-semibold mb-1">Web Developer</p>
+              <p><strong>Team size:</strong> 10 (4 BE, 3 FE, 2 QA, 1 PM)</p>
+              <p><strong>Công việc chính:</strong></p>
+              <ul>
+                <li>Phát triển các module quản lý nội bộ trong hệ thống S-Office.</li>
+                <li>Xây dựng API và giao diện cho các tính năng quản lý nhân sự, tài sản, quy trình.</li>
+                <li>Tham gia tối ưu hiệu năng API, cải thiện trải nghiệm người dùng.</li>
+                <li>Phối hợp chặt chẽ với các nhóm khác (BA, QA, Designer) trong quy trình Agile/Scrum.</li>
+                <li>Hỗ trợ triển khai CI/CD, test tính năng và viết tài liệu hướng dẫn.</li>
+              </ul>
+              <p><strong>Công nghệ:</strong> Laravel, Vue 3, InertiaJS, JavaScript, MySQL, Redis, Docker, GitLab CI/CD.</p>
+              <p><strong>Mô hình vận hành:</strong> Microservices.</p>
+              <p><strong>Thành tựu:</strong> Góp phần giảm 30% thời gian xử lý dữ liệu, triển khai thành công module HRM được 200+ nhân viên nội bộ sử dụng.</p>
             </div>
           </div>
         </div>
@@ -294,7 +207,16 @@
     </div>
   </div>
 
-  <!-- Bootstrap JS -->
+  <!-- SortableJS -->
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
+  <script>
+    document.querySelectorAll('.sortable').forEach(el => {
+      new Sortable(el, {
+        animation: 150,
+        ghostClass: 'sortable-ghost'
+      });
+    });
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
