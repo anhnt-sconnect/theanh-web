@@ -143,6 +143,23 @@
     #langSwitchBtn i {
       margin-right: 5px;
     }
+
+    /* Contact Links */
+    .contact-link {
+      transition: all 0.3s ease;
+      padding: 2px 6px;
+      border-radius: 4px;
+      position: relative;
+    }
+    .contact-link:hover {
+      color: #0d6efd !important;
+      background: rgba(13, 110, 253, 0.1);
+      transform: translateY(-1px);
+      text-decoration: none !important;
+    }
+    .contact-link:active {
+      transform: translateY(0);
+    }
   </style>
 </head>
 <body>
@@ -155,12 +172,11 @@
   <div class="container py-5">
     <!-- Header -->
     <div class="text-center mb-5 fade-in">
-      <img src="https://via.placeholder.com/160" alt="Avatar" class="profile-img mb-3">
       <h1 class="fw-bold" data-key="name">NGUYỄN THẾ ANH</h1>
       <p class="text-muted" data-key="title">WEB DEVELOPER</p>
       <p>
-        <i class="fas fa-phone"></i> 0963978591 &nbsp;
-        <i class="fas fa-envelope"></i> ta1782001@gmail.com &nbsp;
+        <i class="fas fa-phone"></i> <a href="tel:+84963978591" class="text-decoration-none text-dark contact-link">0963978591</a> &nbsp;
+        <i class="fas fa-envelope"></i> <a href="mailto:ta1782001@gmail.com" class="text-decoration-none text-dark contact-link">ta1782001@gmail.com</a> &nbsp;
         <i class="fas fa-map-marker-alt"></i> <span data-key="location">Thanh Xuân Bắc - Hà Nội</span>
       </p>
     </div>
